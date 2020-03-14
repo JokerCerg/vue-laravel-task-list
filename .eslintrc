@@ -1,0 +1,42 @@
+{
+    "extends": ["eslint:recommended", "plugin:vue/recommended", "airbnb-vue"],
+    "rules": {
+        "import/no-unresolved": [0, { "caseSensitive": false }],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "indent": ["error", 4],
+        "vue/html-indent": ["error", 4],
+        "no-param-reassign": 0,
+        "max-nested-callbacks": ["error", 2],
+        "complexity": ["error", 5],
+        "curly": ["error", "all"],
+        "space-before-function-paren": [
+            "error",
+            { "anonymous": "always", "named": "never", "asyncArrow": "always" }
+        ],
+        "comma-dangle": [0, "always-multiline"],
+        "semi": [0, "always"],
+        "arrow-parens": ["error", "as-needed"]
+    },
+    "env": {
+        "node": true,
+        "es6": true,
+        "jquery": true,
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".vue"]
+            }
+        }
+    }
+}

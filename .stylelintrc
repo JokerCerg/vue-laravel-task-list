@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "indentation": 4,
+    "shorthand-property-no-redundant-values": true,
+    "selector-list-comma-newline-after": null,
+    "declaration-colon-newline-after": null,
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
+      }
+    ]
+  }
+}
