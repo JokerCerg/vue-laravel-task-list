@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 <template>
     <v-app class="todo-list__wrapper">
         <div class="todo-list-header">
@@ -44,6 +45,7 @@
 
 <script>
 import axios from 'axios';
+// eslint-disable-next-line import/extensions
 import TodoItem from '../components/todoItem';
 
 const generate = require('nanoid/generate');
