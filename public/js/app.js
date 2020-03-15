@@ -2110,30 +2110,22 @@ var generate = __webpack_require__(/*! nanoid/generate */ "./node_modules/nanoid
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
+                _context.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'GET',
                   url: '/api/tasks'
                 });
 
-              case 3:
+              case 2:
                 result = _context.sent;
                 _this4.todos = result.data;
-                _context.next = 10;
-                break;
 
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-                console.log(123123123);
-
-              case 10:
+              case 4:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee);
       }))();
     },
     generateId: function generateId() {
@@ -2162,12 +2154,14 @@ var generate = __webpack_require__(/*! nanoid/generate */ "./node_modules/nanoid
                   checked: false
                 });
 
-                _this5.taskName = '';
-                _context2.next = 7;
+                _context2.next = 6;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/tasks', {
                   id: id,
                   title: _this5.taskName
                 });
+
+              case 6:
+                _this5.taskName = '';
 
               case 7:
                 _context2.next = 13;
@@ -2198,9 +2192,7 @@ var generate = __webpack_require__(/*! nanoid/generate */ "./node_modules/nanoid
                 todo.checked = !todo.checked;
                 _context3.prev = 1;
                 _context3.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/tasks/".concat(todo.id, "/check"), {
-                  checked: !todo.checked
-                });
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/tasks/".concat(todo.id));
 
               case 4:
                 _context3.next = 9;
@@ -2220,21 +2212,41 @@ var generate = __webpack_require__(/*! nanoid/generate */ "./node_modules/nanoid
       }))();
     },
     handleRemoveTodo: function handleRemoveTodo(todo) {
-      var index = this.todos.findIndex(function () {
-        return todo;
-      });
+      var _this6 = this;
 
-      try {
-        this.todos = this.todos.filter(function (item) {
-          return item.id !== todo.id;
-        });
-        axios__WEBPACK_IMPORTED_MODULE_1___default()({
-          method: 'GET',
-          url: "/api/tasks/".concat(todo.id, "/remove")
-        });
-      } catch (_unused3) {
-        this.todos.splice(index, 0, todo);
-      }
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var index;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                index = _this6.todos.findIndex(function () {
+                  return todo;
+                });
+                _this6.todos = _this6.todos.filter(function (item) {
+                  return item.id !== todo.id;
+                });
+                _context4.prev = 2;
+                _context4.next = 5;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("/api/tasks/".concat(todo.id));
+
+              case 5:
+                _context4.next = 10;
+                break;
+
+              case 7:
+                _context4.prev = 7;
+                _context4.t0 = _context4["catch"](2);
+
+                _this6.todos.splice(index, 0, todo);
+
+              case 10:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[2, 7]]);
+      }))();
     },
     fliterClosed: function fliterClosed() {
       this.filterProp = 'Открытые';
@@ -39298,7 +39310,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "profile" }, [
-      _c("h1", [_vm._v("This is an about page")])
+      _c("h1", [_vm._v("В следующих версиях тут будет профиль")])
     ])
   }
 ]

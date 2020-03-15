@@ -103,12 +103,8 @@ export default {
     },
     methods: {
         async getTodos() {
-            try {
-                const result = await axios({ method: 'GET', url: '/api/tasks' });
-                this.todos = result.data;
-            } catch (e) {
-                console.log(123123123);
-            }
+            const result = await axios({ method: 'GET', url: '/api/tasks' });
+            this.todos = result.data;
         },
         generateId() {
             return generate('0123456789', 6);
@@ -118,8 +114,8 @@ export default {
             try {
                 if (this.taskName.trim().length > 2) {
                     this.todos.push({ id, title: this.taskName, checked: false });
-                    this.taskName = '';
                     await axios.post('/api/tasks', { id, title: this.taskName });
+                    this.taskName = '';
                 }
             } catch {
                 this.todos = this.todos.filter(todo => todo.id !== id);
@@ -129,16 +125,16 @@ export default {
         async handleCheckTodo(todo) {
             todo.checked = !todo.checked;
             try {
-                await axios.put(`/api/tasks/${todo.id}/check`, { checked: !todo.checked });
+                await axios.put(`/api/tasks/${todo.id}`);
             } catch {
                 todo.checked = !todo.checked;
             }
         },
-        handleRemoveTodo(todo) {
+        async handleRemoveTodo(todo) {
             const index = this.todos.findIndex(() => todo);
+            this.todos = this.todos.filter(item => item.id !== todo.id);
             try {
-                this.todos = this.todos.filter(item => item.id !== todo.id);
-                axios({ method: 'GET', url: `/api/tasks/${todo.id}/remove` });
+                await axios.delete(`/api/tasks/${todo.id}`);
             } catch {
                 this.todos.splice(index, 0, todo);
             }

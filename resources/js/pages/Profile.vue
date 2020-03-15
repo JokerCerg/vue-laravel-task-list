@@ -1,6 +1,6 @@
 <template>
     <div class="profile">
-        <h1>This is an about page</h1>
+        <h1>В следующих версиях тут будет профиль</h1>
     </div>
 </template>
 

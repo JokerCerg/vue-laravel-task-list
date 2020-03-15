@@ -22,7 +22,21 @@ class TaskController extends Controller
         $task->title = $request->title;
 
         $task->save();
+    }
 
-        return Task::all();
+    public function update(Request $request, $id)
+    {
+        $task = Task::findOrFail($id);
+
+        $task->checked = !$task->checked;
+
+        $task->save();
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $task = Task::findOrFail($id);
+
+        $task->delete();
     }
 }
