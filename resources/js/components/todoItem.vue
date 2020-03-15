@@ -9,8 +9,8 @@
         <v-card-text class="text-uppercase" :class="checked">
             {{ todo.title }}
         </v-card-text>
-        <div @click="$emit('handleRemoveTodo')" class="todo-item__btn">
-            <button class="todo-item__close">&times;</button>
+        <div @click="$emit('handleRemoveTodo')" class="todo-item-btn">
+            <button class="todo-item-btn__close">&times;</button>
         </div>
     </div>
 </template>
@@ -38,21 +38,30 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-    &__close {
-        vertical-align: middle;
-        display: none;
-        border: none;
-        background: none;
-        cursor: pointer;
-        padding: 0;
-        margin: 0;
-        line-height: 30px;
-        font-size: 20px;
-        color: #bd2130;
+    &-btn {
+        position: relative;
+        width: 30px;
+        height: 30px;
+
+        &__close {
+            position: absolute;
+            left: 0;
+            right: 0;
+            vertical-align: middle;
+            display: none;
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 0 auto;
+            line-height: 30px;
+            font-size: 20px;
+            color: #bd2130;
+        }
     }
 
     &:hover {
-        .todo-item__close {
+        .todo-item-btn__close {
             display: inline;
         }
     }
@@ -66,10 +75,6 @@ export default {
         flex-basis: 100%;
         cursor: pointer;
         max-width: 350px;
-    }
-
-    &__btn {
-        width: 30px;
     }
 }
 </style>

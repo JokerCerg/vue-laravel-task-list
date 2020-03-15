@@ -6805,7 +6805,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".todo-item {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.todo-item__close {\n  vertical-align: middle;\n  display: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n  margin: 0;\n  line-height: 30px;\n  font-size: 20px;\n  color: #bd2130;\n}\n.todo-item:hover .todo-item__close {\n  display: inline;\n}\n.todo-item__checkbox {\n  margin: 0;\n}\n.todo-item__title {\n  font-size: 18px;\n  -ms-flex-preferred-size: 100%;\n      flex-basis: 100%;\n  cursor: pointer;\n  max-width: 350px;\n}\n.todo-item__btn {\n  width: 30px;\n}", ""]);
+exports.push([module.i, ".todo-item {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.todo-item-btn {\n  position: relative;\n  width: 30px;\n  height: 30px;\n}\n.todo-item-btn__close {\n  position: absolute;\n  left: 0;\n  right: 0;\n  vertical-align: middle;\n  display: none;\n  border: none;\n  background: none;\n  cursor: pointer;\n  padding: 0;\n  margin: 0 auto;\n  line-height: 30px;\n  font-size: 20px;\n  color: #bd2130;\n}\n.todo-item:hover .todo-item-btn__close {\n  display: inline;\n}\n.todo-item__checkbox {\n  margin: 0;\n}\n.todo-item__title {\n  font-size: 18px;\n  -ms-flex-preferred-size: 100%;\n      flex-basis: 100%;\n  cursor: pointer;\n  max-width: 350px;\n}", ""]);
 
 // exports
 
@@ -39267,14 +39267,14 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "todo-item__btn",
+          staticClass: "todo-item-btn",
           on: {
             click: function($event) {
               return _vm.$emit("handleRemoveTodo")
             }
           }
         },
-        [_c("button", { staticClass: "todo-item__close" }, [_vm._v("×")])]
+        [_c("button", { staticClass: "todo-item-btn__close" }, [_vm._v("×")])]
       )
     ],
     1
