@@ -2110,60 +2110,114 @@ var generate = __webpack_require__(/*! nanoid/generate */ "./node_modules/nanoid
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _context.prev = 0;
+                _context.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'GET',
                   url: '/api/tasks'
                 });
 
-              case 2:
+              case 3:
                 result = _context.sent;
                 _this4.todos = result.data;
+                _context.next = 10;
+                break;
 
-              case 4:
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(123123123);
+
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, null, [[0, 7]]);
       }))();
     },
     generateId: function generateId() {
-      return generate('0123456789', 4);
+      return generate('0123456789', 6);
     },
     addNewTask: function addNewTask() {
-      var id = this.generateId();
+      var _this5 = this;
 
-      try {
-        if (this.taskName.trim().length > 2) {
-          this.todos.push({
-            id: id,
-            title: this.taskName,
-            checked: false
-          });
-          this.taskName = '';
-          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/tasks', {
-            id: id,
-            title: this.taskName
-          });
-        }
-      } catch (_unused) {
-        this.todos = this.todos.filter(function (todo) {
-          return todo.id !== id;
-        });
-        console.error("Task wasn't added!");
-      }
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var id;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                id = _this5.generateId();
+                _context2.prev = 1;
+
+                if (!(_this5.taskName.trim().length > 2)) {
+                  _context2.next = 7;
+                  break;
+                }
+
+                _this5.todos.push({
+                  id: id,
+                  title: _this5.taskName,
+                  checked: false
+                });
+
+                _this5.taskName = '';
+                _context2.next = 7;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/tasks', {
+                  id: id,
+                  title: _this5.taskName
+                });
+
+              case 7:
+                _context2.next = 13;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](1);
+                _this5.todos = _this5.todos.filter(function (todo) {
+                  return todo.id !== id;
+                });
+                console.error("Task wasn't added!");
+
+              case 13:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 9]]);
+      }))();
     },
     handleCheckTodo: function handleCheckTodo(todo) {
-      todo.checked = !todo.checked;
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                todo.checked = !todo.checked;
+                _context3.prev = 1;
+                _context3.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/tasks/".concat(todo.id, "/check"), {
+                  checked: !todo.checked
+                });
 
-      try {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/tasks/".concat(todo.id, "/check"), {
-          checked: !todo.checked
-        });
-      } catch (_unused2) {
-        todo.checked = !todo.checked;
-      }
+              case 4:
+                _context3.next = 9;
+                break;
+
+              case 6:
+                _context3.prev = 6;
+                _context3.t0 = _context3["catch"](1);
+                todo.checked = !todo.checked;
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[1, 6]]);
+      }))();
     },
     handleRemoveTodo: function handleRemoveTodo(todo) {
       var index = this.todos.findIndex(function () {
@@ -96259,8 +96313,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/jokercerg/projects/vue-laravel-task-list/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/jokercerg/projects/vue-laravel-task-list/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\vue-laravel-task-list\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\vue-laravel-task-list\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

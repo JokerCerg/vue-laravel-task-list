@@ -7,5 +7,11 @@ Route::get('/tasks', function(){
 });
 
 Route::get('/', function() {
-    return redirect('/tasks');
+    return response()->json([
+        'stuff' => phpinfo()
+    ]);
 });
+
+// Route::get('/', function() {
+//     return redirect('/tasks');
+// });

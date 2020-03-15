@@ -103,29 +103,33 @@ export default {
     },
     methods: {
         async getTodos() {
-            const result = await axios({ method: 'GET', url: '/api/tasks' });
-            this.todos = result.data;
+            try {
+                const result = await axios({ method: 'GET', url: '/api/tasks' });
+                this.todos = result.data;
+            } catch (e) {
+                console.log(123123123);
+            }
         },
         generateId() {
-            return generate('0123456789', 4);
+            return generate('0123456789', 6);
         },
-        addNewTask() {
+        async addNewTask() {
             const id = this.generateId();
             try {
                 if (this.taskName.trim().length > 2) {
                     this.todos.push({ id, title: this.taskName, checked: false });
                     this.taskName = '';
-                    axios.post('/api/tasks', { id, title: this.taskName });
+                    await axios.post('/api/tasks', { id, title: this.taskName });
                 }
             } catch {
                 this.todos = this.todos.filter(todo => todo.id !== id);
                 console.error("Task wasn't added!");
             }
         },
-        handleCheckTodo(todo) {
+        async handleCheckTodo(todo) {
             todo.checked = !todo.checked;
             try {
-                axios.post(`/api/tasks/${todo.id}/check`, { checked: !todo.checked });
+                await axios.put(`/api/tasks/${todo.id}/check`, { checked: !todo.checked });
             } catch {
                 todo.checked = !todo.checked;
             }
